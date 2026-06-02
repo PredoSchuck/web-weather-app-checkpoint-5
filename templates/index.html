@@ -9,6 +9,7 @@
         body { background-color: #0b0f19; color: #f8fafc; }
         .weather-card { background-color: #111827; border: 1px solid #1f2937; border-radius: 1rem; max-width: 450px; width: 100%; padding: 2rem; }
         .info-box { background-color: #1f293b; border: 1px solid #334155; }
+        .form-control::placeholder { color: #94a3b8 }
     </style>
 </head>
 <body class="d-flex min-vh-100 align-items-center justify-content-center p-3">
@@ -33,14 +34,14 @@
                     <div class="col-6">
                         <div class="info-box p-3 rounded">
                             <i class="fa-solid fa-droplet text-primary mb-2 fs-4"></i>
-                            <span class="d-block text-muted small text-uppercase">Umidade</span>
+                            <span class="d-block text-white small text-uppercase">Umidade</span>
                             <span class="fs-5 fw-bold text-white">{{ clima['main']['humidity'] }}%</span>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="info-box p-3 rounded">
                             <i class="fa-solid fa-wind text-success mb-2 fs-4"></i>
-                            <span class="d-block text-muted small text-uppercase">Vento</span>
+                            <span class="d-block text-white small text-uppercase">Vento</span>
                             <span class="fs-5 fw-bold text-white">{{ (clima['wind']['speed'] * 3.6) | round(1) }} km/h</span>
                         </div>
                     </div>
