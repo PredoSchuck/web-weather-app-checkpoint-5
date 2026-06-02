@@ -10,10 +10,14 @@
         .weather-card { background-color: #111827; border: 1px solid #1f2937; border-radius: 1rem; max-width: 450px; width: 100%; padding: 2rem; }
         .info-box { background-color: #1f293b; border: 1px solid #334155; }
         .form-control::placeholder { color: #94a3b8 }
+        .bg-card-default { background-color: #111827; border: 1px solid #1f2937; }
+        .bg-card-Rain { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #38bdf8; }
+        .bg-card-Clear { background: linear-gradient(135deg, #1e1b4b 0%, #111827 100%); border: 1px solid #facc15; }
+        .bg-card-Clouds { background: linear-gradient(135deg, #334155 0%, #111827 100%); border: 1px solid #94a3b8; }
     </style>
 </head>
 <body class="d-flex min-vh-100 align-items-center justify-content-center p-3">
-    <div class="weather-card shadow-lg">
+    <div class="weather-card shadow-lg {% if clima %}bg-card-{{ clima['weather'][0]['main'] }}{% else %}bg-card-default{% endif %}">
         <h2 class="text-center text-info fw-bold mb-4"><i class="fa-solid fa-cloud-sun me-2"></i>Weather App</h2>
         <form method="POST" class="d-flex gap-2 mb-4">
             <input type="text" name="cidade" placeholder="Digite uma cidade..." class="form-control bg-dark text-white border-secondary py-2" required>
