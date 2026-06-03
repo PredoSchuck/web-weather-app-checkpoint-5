@@ -91,8 +91,8 @@ Acesse http://127.0.0.1:5000/ no seu navegador para testar a aplicação.
 
 Para turbinar o portfólio, foram adicionadas melhorias além da estrutura básica:
 * [X] **Desafio 1:** Interface dinâmica alterando cores e fundos com base nas condições do clima (Chuva, Céu Limpo, Nuvens).
-* [ ] **Desafio 2:** Exibição do horário do nascer e pôr do sol formatados através do timestamp Unix da API.
-* [ ] **Desafio 3:** Inclusão da sensação térmica na tela principal (feels_like).
+* [X] **Desafio 2:** Exibição do horário do nascer e pôr do sol formatados através do timestamp Unix da API.
+* [X] **Desafio 3:** Inclusão da sensação térmica na tela principal (feels_like).
 * [ ] **Desafio 4:** Histórico de buscas persistente salvando as últimas 3 cidades pesquisadas em um arquivo JSON.
 
 ---
