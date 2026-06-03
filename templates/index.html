@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body { background-color: #0b0f19; color: #f8fafc; }
-        .weather-card { background-color: #111827; border: 1px solid #1f2937; border-radius: 1rem; max-width: 450px; width: 100%; padding: 2rem; }
+        .weather-card { max-width: 450px; width: 100%; padding: 2rem; border-radius: 1rem; }
         .info-box { background-color: #1f293b; border: 1px solid #334155; }
         .form-control::placeholder { color: #94a3b8 }
         .bg-card-default { background-color: #111827; border: 1px solid #1f2937; }
@@ -16,6 +16,7 @@
         .bg-card-Clouds { background: linear-gradient(135deg, #334155 0%, #111827 100%); border: 1px solid #94a3b8; }
     </style>
 </head>
+
 <body class="d-flex min-vh-100 align-items-center justify-content-center p-3">
     <div class="weather-card shadow-lg {% if clima %}bg-card-{{ clima['weather'][0]['main'] }}{% else %}bg-card-default{% endif %}">
         <h2 class="text-center text-info fw-bold mb-4"><i class="fa-solid fa-cloud-sun me-2"></i>Weather App</h2>
@@ -32,8 +33,14 @@
             <div class="text-center mt-4">
                 <h3 class="fw-bold text-white"><i class="fa-solid fa-location-dot text-info me-2"></i>{{ clima['name'] }}, {{ clima['sys']['country'] }}</h3>
                 <p class="text-info text-capitalize mb-4 mt-1">{{ clima['weather'][0]['description'] }}</p>
-                <div class="display-2 fw-bold text-white mb-4">{{ clima['main']['temp'] | round(1) }}°C</div>
                 
+                <div class="display-2 fw-bold text-white mb-1">{{ clima['main']['temp'] | round(1) }}°C</div>
+                
+                <div class="text-white small mb-4">
+                    <i class="fa-solid fa-temperature-three-quarters me-1"></i> 
+                    Sensação térmica: <strong class="text-white">{{ clima['main']['feels_like'] | round(1) }}°C</strong>
+                </div>
+
                 <div class="row g-3 border-top border-secondary pt-4">
                     <div class="col-6">
                         <div class="info-box p-3 rounded">
@@ -42,6 +49,7 @@
                             <span class="fs-5 fw-bold text-white">{{ clima['main']['humidity'] }}%</span>
                         </div>
                     </div>
+
                     <div class="col-6">
                         <div class="info-box p-3 rounded">
                             <i class="fa-solid fa-wind text-success mb-2 fs-4"></i>
@@ -49,8 +57,23 @@
                             <span class="fs-5 fw-bold text-white">{{ (clima['wind']['speed'] * 3.6) | round(1) }} km/h</span>
                         </div>
                     </div>
-                </div>
-            </div>
+
+                    <div class="col-6">
+                        <div class="info-box p-3 rounded">
+                            <i class="fa-solid fa-sun text-warning mb-2 fs-4"></i>
+                            <span class="d-block text-white small text-uppercase">Nascer do Sol</span>
+                            <span class="fs-6 fw-bold text-white">{{ clima['nascer_sol'] }}</span>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="info-box p-3 rounded">
+                            <i class="fa-solid fa-moon text-light mb-2 fs-4"></i>
+                            <span class="d-block text-white small text-uppercase">Pôr do Sol</span>
+                            <span class="fs-6 fw-bold text-white">{{ clima['por_sol'] }}</span>
+                        </div>
+                    </div>
+                </div> </div>
         {% endif %}
     </div>
 </body>

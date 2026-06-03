@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 import requests
+from datetime import datetime, timezone, timedelta 
+
 
 app = Flask(__name__)
 API_KEY = "7af4a2ca8a3a7dc7ca04b6821f2c421a"
@@ -16,6 +18,12 @@ def index():
                 resposta = requests.get(url)
                 if resposta.status_code == 200:
                     clima = resposta.json()
+                    fuso_segundos = clima['timezone']
+                    fuso_horario = timezone(timedelta(seconds=fuso_segundos))
+                    nascer_utc = datetime.fromtimestamp(clima['sys']['sunrise'], timezone.utc)
+                    por_utc = datetime.fromtimestamp(clima['sys']['sunset'], timezone.utc)
+                    clima['nascer_sol'] = nascer_utc.astimezone(fuso_horario).strftime('%H:%M')
+                    clima['por_sol'] = por_utc.astimezone(fuso_horario).strftime('%H:%M')
                 else:
                     erro = "Cidade não encontrada! Tente novamente."
             except requests.exceptions.RequestException:
